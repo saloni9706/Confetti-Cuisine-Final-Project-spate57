@@ -1,0 +1,84 @@
+<div class="data-form">
+  <form class="form-signin" action="<%=`/culinary_vacations/${culinary_vacation._id}/update?_method=PUT`%>" method="POST">
+    <h2 class="form-signin-heading">Edit Culinary Package:</h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" value="<%= culinary_vacation.title %>" placeholder="Title" autofocus required>
+    
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" class="form-control" value="<%= culinary_vacation.description %>" placeholder="Description" required>
+    
+    <label for="inputCuisine">Cuisine type</label>
+    <select name="cuisine" id="inputCuisine" required="" class="form-control">
+            <option value="" disabled="" selected="">--Select Cuisine Type--</option>
+    <%
+      var options = ["Continental", "Traditional", "Haute-cuisine", "Nouvelle-cuisine","Fusion","Vegan","Vegetarian","Asian","Indian","Middle-Eastern","African","Central American","South American" ];
+      for ( var i = 0; i < options.length; i++ )
+      {
+          var isSelected = ( culinary_vacation.cuisine == options[i] ) ? "selected" : "";
+      %>  
+          <option value="<%=options[i]%>" <%=isSelected %>>
+              <%= options[i] %>
+          </option>
+      <%
+      }
+      %>
+    </select>
+    
+    
+    <label for="inputHeroImage">Vacation 'hero image' filename</label>
+    <input type="text" name="heroImage" id="inputHeroImage" class="form-control" value="<%= culinary_vacation.heroImage %>" placeholder="Filename for vacation package hero image, e.g., Thai.jpg">
+
+    <label for="inputMaxTravelers">Max Travelers</label>
+    <input type="number" name="maxTravelers" id="inputMaxTravelers" class="form-control" value="<%= culinary_vacation.maxTravelers %>" placeholder="Maximum Travelers" min="0" max="25" required="">
+
+    <label for="inputCost">Cost ($)</label>
+    <input type="number" name="cost" id="inputCost" class="form-control" value="<%= culinary_vacation.cost %>" placeholder="Cost ($) Per Person" min="0" required="">
+
+    <label for="inputDestination">Destination</label>
+    <input type="text" name="destination" id="inputDestination" class="form-control" value="<%= culinary_vacation.destination %>" placeholder="Destination" required="">
+
+    <label for="inputDepatureLocation">Departure Location</label>
+    <select name="departureLocation" id="inputDepartureLocation" class="form-control" required="">
+      <option value="" disabled="" >--Select Departure Location--</option>
+      <%
+      var options = ["New York (JFK)", "Boston (BOS)", "Chicago (ORD)", "Miami (MIA)","St. Louis (STL)","Dallas (DFW)","Seattle (SEA)","San Francisco (SFO)" ];
+      for ( var i = 0; i < options.length; i++ )
+      {
+          var isSelected = ( culinary_vacation.departureLocation == options[i] ) ? "selected" : "";
+      %>  
+          <option value="<%=options[i]%>" <%=isSelected %>>
+              <%= options[i] %>
+          </option>
+      <%
+      }
+      %>
+      </select>
+
+    <label for="inputDepartureDate">Departure Date</label>
+    <input type="text" name="departureDate" onkeydown="return false;" id="inputDepartureDate" class="form-control" value="<%= culinary_vacation.departureDate %>" placeholder="Departure Date" required="">
+   
+    <label for="inputReturnDate">Return Date</label>
+    <input type="text" name="returnDate" onkeydown="return false;" id="inputReturnDate" class="form-control" value="<%= culinary_vacation.returnDate %>" placeholder="Return Date" required="">
+
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
+</div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+   $( function() {
+    $( "#inputDepartureDate" ).datepicker({
+      minDate: 0,
+      dateFormat: 'mm/dd/yy',
+      onClose: function (selectedDate) {
+                    $("#inputReturnDate").datepicker("option", "minDate", selectedDate);
+                }
+    });
+    $( "#inputReturnDate" ).datepicker({
+      // minDate: 0,
+      dateFormat: 'mm/dd/yy',
+    });
+  } );
+</script>

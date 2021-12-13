@@ -1,0 +1,80 @@
+<div class="data-form">
+  <form class="form-signin" action="<%=`/culinary_vacations/create`%>" method="POST">
+    <h2 class="form-signin-heading">Create a Culinary Package</h2>
+    <label for="inputTitle">Title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" placeholder="Title" autofocus required>
+    
+    <label for="inputDescription">Description</label>
+    <input type="text" name="description" id="inputDescription" class="form-control" placeholder="Description" required>
+    
+    <label for="inputCuisine">Cuisine type</label>
+    <select name="cuisine" id="inputCuisine" required="" class="form-control">
+            <option value="" disabled="" selected="">--Select Cuisine Type--</option>
+            <option value="Continental">Continental</option>
+            <option value="Traditional">Traditional</option>
+            <option value="Haute-cuisine">Haute-cuisine</option>
+            <option value="Nouvelle-cuisine">Nouvelle-cuisine</option>
+            <option value="Fusion">Fusion</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Asian">Asian</option>
+            <option value="Indian">Indian</option>
+            <option value="Middle-Eastern">Middle-Eastern</option>
+            <option value="African">African</option>
+            <option value="Central American">Central American</option>
+            <option value="South American">South American</option>
+    </select>
+    
+    <label for="inputHeroImage">Vacation 'hero image' filename</label>
+    <input type="text" name="heroImage" id="inputHeroImage" class="form-control" placeholder="Filename for vacation package hero image, e.g., Thai.jpg">
+
+    <label for="inputMaxTravelers">Max Travelers</label>
+    <input type="number" name="maxTravelers" id="inputMaxTravelers" class="form-control" placeholder="Maximum Travelers" min="0" max="25" required="">
+
+    <label for="inputCost">Cost ($)</label>
+    <input type="number" name="cost" id="inputCost" class="form-control" placeholder="Cost ($) Per Person" min="0" required="">
+
+    <label for="inputDestination">Destination</label>
+    <input type="text" name="destination" id="inputDestination" class="form-control" placeholder="Destination" required="">
+
+    <label for="inputDepatureLocation">Departure Location</label>
+    <select name="departureLocation" id="inputDepartureLocation" class="form-control" required="">
+          <option value="" disabled="" selected="">--Select Departure Location--</option>
+          <option value="New York (JFK)">New York (JFK)</option>
+          <option value="Boston (BOS)">Boston (BOS)</option>
+          <option value="Chicago (ORD)">Chicago (ORD)</option>
+          <option value="Miami (MIA)">Miami (MIA)</option>
+          <option value="St. Louis (STL)">St. Louis (STL)</option>
+          <option value="Dallas (DFW)">Dallas (DFW)</option>
+          <option value="Seattle (SEA)">Seattle (SEA)</option>
+          <option value="San Francisco (SFO)">San Francisco (SFO)</option>
+    </select>
+
+    <label for="inputDepartureDate">Departure Date</label>
+    <input type="text" name="departureDate" id="inputDepartureDate" onkeydown="return false;" class="form-control" placeholder="Departure Date" required="">
+    
+    <label for="inputReturnDate">Return Date</label>
+    <input type="text" name="returnDate" id="inputReturnDate" onkeydown="return false;" class="form-control" placeholder="Return Date" required="">
+
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+  </form>
+</div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+   $( function() {
+    $( "#inputDepartureDate" ).datepicker({
+      minDate: 0,
+      dateFormat: 'mm/dd/yy',
+      onClose: function (selectedDate) {
+                    $("#inputReturnDate").datepicker("option", "minDate", selectedDate);
+                }
+    });
+    $( "#inputReturnDate" ).datepicker({
+      // minDate: 0,
+      dateFormat: 'mm/dd/yy',
+    });
+  } );
+</script>
