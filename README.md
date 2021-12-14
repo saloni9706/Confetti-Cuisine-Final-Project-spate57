@@ -2,8 +2,11 @@
 
 ## Please run the following command
 npm install
+
 npm install dotenv
+
 npm install chalk
+
 npm install connect-ensure-login
 
 
