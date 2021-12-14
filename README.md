@@ -9,7 +9,7 @@ npm install chalk
 
 npm install connect-ensure-login
 
-
+## Extra Credit
  I have completed all the basic requiremtes for this project
 
  I have implementd Extra Credit 1: [10pts] A return date should naturally come after a departure date, though the requirements above have not asked you to guarantee that. This can be done using either (or some combination of) HTML form attributes and JavaScript coding in the browser, Mongoose validation code, or some Express middleware validation. Here's an example of using express-validator middleware to check if two passwords match as an example of how this might be done.Links to an external site. If you add any of these (or better yet, multiple checks in the interface and at the backend) that will earn you 10 extra points.
