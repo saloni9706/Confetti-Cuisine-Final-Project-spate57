@@ -26,7 +26,7 @@ var culinary_VacationSchema = new Schema(
       type: String,
       //default: "",
       required: true,
-      min: [0, "Course cannot have a negative number of students"]
+      min: [0, "Vacation cannot have a negative number of students"]
     },
     cost: {
       type: Number,
